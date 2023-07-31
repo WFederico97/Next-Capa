@@ -15,4 +15,18 @@ const Edit = () => {
     )
 }
 
+// export const getServerSideProps = async (context) => {
+    
+//     const id = context.params.id
+
+//     const todo = await fetchOneTodo(id)
+    
+//     return {
+//         props: {
+//             todo
+//         }
+//     }
+// }
+
 export default Edit
+

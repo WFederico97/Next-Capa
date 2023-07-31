@@ -1,27 +1,28 @@
 import { getOneTodo } from '@/store/todos/todoslice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Router, useRouter } from 'next/router'
 import EditForm from './EditForm'
+import { fetchOneTodo } from '@/services/todos'
 
 
 
 const EditTodos = ({id}) => {
 
     const router = useRouter()
-    const dispatch = useDispatch()
-    const todo = useSelector(state => state.todos)
-    console.log(todo)
+    const [todo, setTodo] = useState()
+
     useEffect(() => {
-        console.log(id)
-      const getTodoById = async () => {
-        dispatch(getOneTodo(id))
-      }
-        getTodoById()
+        if(router.isReady) {
+            const getTodoById = async () => {
+                const todoFromServer = await fetchOneTodo(id)
+                setTodo(todoFromServer)
+              }
+                getTodoById()
+        }
     }, [id])
     
-    console.log(todo)
-    console.log(id)
+    
 
     if (todo) {
         return (
@@ -32,7 +33,7 @@ const EditTodos = ({id}) => {
     } else if (router.isFallback) {
         return <div>Loading...</div>
     } else {
-        return null
+        return <div>No funca</div>
     }
     
 

@@ -36,7 +36,7 @@ const formSchema = yup.object({
         .required("Campo Obligatorio"),
 });
 
-export default function EditForm({ todo }) {
+export default function EditForm({todo}) {
     const dispatch = useDispatch()
     const {
         control,

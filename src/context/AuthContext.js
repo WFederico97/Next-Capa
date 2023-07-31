@@ -15,8 +15,6 @@ const defaultProviderValue = {
 
 }
 
-
-
 export const AuthContext = createContext(defaultProviderValue)
 
 const AuthProvider = ({ children }) => {
